@@ -1,0 +1,22 @@
+{% extends 'futbol/base.html' %}
+{% block content %}
+</br></br>
+<div class="table-responcive">
+    <table class='table table-striped'>
+        <tr>
+            <td><b>Nombre</b></td>
+            <td><b>Apellido</b></td>
+            <td><b>Dni</b></td>
+            <td><b>Equipo</b></td>
+        </tr>
+        {% for jugador in jugadores %}
+            <tr>
+                <td>{{jugador.nombre}} </td>
+                <td>{{jugador.apellido}}</td>
+                <td>{{jugador.dni}}</td>
+                <td>{{jugador.equipo.nombre}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

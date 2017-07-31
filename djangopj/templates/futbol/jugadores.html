@@ -1,22 +1,38 @@
 {% extends 'futbol/base.html' %}
 {% block content %}
+{% load static %}
 </br></br>
-<div class="table-responcive">
-    <table class='table table-striped'>
-        <tr>
-            <td><b>Nombre</b></td>
-            <td><b>Apellido</b></td>
-            <td><b>Dni</b></td>
-            <td><b>Equipo</b></td>
-        </tr>
-        {% for jugador in jugadores %}
-            <tr>
-                <td>{{jugador.nombre}} </td>
-                <td>{{jugador.apellido}}</td>
-                <td>{{jugador.dni}}</td>
-                <td>{{jugador.equipo.nombre}}</td>
-            </tr>
-        {% endfor %}
-    </table>
-</div>
-{% endblock %}
+<div ngController='JugadoresController'>
+  <div class="table-responcive">
+      <table class='table table-striped'>
+          <tr>
+              <td><b>Nombre</b></td>
+              <td><b>Apellido</b></td>
+              <td><b>Dni</b></td>
+              <td><b>Equipo</b></td>
+          </tr>
+          {% for jugador in jugadores %}
+              <tr>
+                  <td>{{jugador.nombre}} </td>
+                  <td>{{jugador.apellido}}</td>
+                  <td>{{jugador.dni}}</td>
+                  <td>{{jugador.equipo.nombre}}</td>
+              </tr>
+          {% endfor %}
+      </table>
+  </div>
+    </br>
+    <button ng-lick='ShowForm()' ng-hide='formVisibility'>Añadir Jugador</button>
+    <div ng-show='formVisibility'>
+        <form method='post'>{% csrf_token %}
+            <div class='form-group'>
+                <h2> Añadir Jugador</h2>
+                {{ form }}
+                </br>
+                <button ng-click='save()'>Guardar</button>
+            </div>
+        </form>
+    </div>
+    <script src="{% static 'js/jugadores.js' %}" type='text/javascript'></script>
+  </div>
+  {% endblock %}

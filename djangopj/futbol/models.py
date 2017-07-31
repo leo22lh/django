@@ -6,20 +6,20 @@ class Posicion(models.Model):
     posicion = models.CharField(max_length=50)
 
 class Equipo(models.Model):
-    nombre = models.CharField(max_length=50)
+    nombre = models.CharField(max_length=50, unique=True)
 
 class Jugador(models.Model):
     equipo = models.ForeignKey(Equipo)
     nombre = models.CharField(max_length=50)
     apellido = models.CharField(max_length=50)
-    dni = models.IntegerField()
+    dni = models.IntegerField(unique=True)
 
 class PosicionJugador(models.Model):
     posicion = models.ForeignKey(Posicion)
     jugador = models.ForeignKey(Jugador)
 
 class Torneo(models.Model):
-    nombre = models.CharField(max_length=50)
+    nombre = models.CharField(max_length=50, unique=True)
 
     def __puntos(equipo):
         partidos = Partido.objects.filter(models.Q(equipo1 = equipo) | models.Q(equipo2 = equipo))

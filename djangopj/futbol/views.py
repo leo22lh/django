@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from futbol.form import EquipoForm
-from futbol.models import Jugador
+from futbol.models import Jugador, Torneo
 
 def index(request):
     return render(request, 'futbol/index.html')
@@ -18,3 +18,8 @@ def crear_equipo(request):
 def jugadores(request):
     jugadores = Jugador.objects.all()
     return render(request, 'futbol/jugadores.html', {'jugadores': jugadores})
+
+def torneos(request):
+    torneo = Torneo.tabla('asd')
+    print(torneo)
+    return render(request, 'futbol/torneos.html', {'torneo': torneo})

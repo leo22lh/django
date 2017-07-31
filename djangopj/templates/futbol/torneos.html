@@ -1,0 +1,22 @@
+{% extends 'futbol/base.html' %}
+{% block content %}
+</br></br>
+<div class="table-responcive">
+    <table class='table table-striped'>
+        <tr>
+            <td><b>Equipos</b></td>
+            <td><b>Puntos</b></td>
+            <td><b>Goles a favor</b></td>
+            <td><b>Goles en contra</b></td>
+        </tr>
+        {% for equipo in torneo  %}
+            <tr>
+                <td>{{equipo.nombre}} </td>
+                <td>{{equipo.puntos}}</td>
+                <td>{{equipo.goles_favor}}</td>
+                <td>{{equipo.goles_contra}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

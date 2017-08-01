@@ -1,5 +1,7 @@
-function JugadoresController($scope){
-    scope.save = function(){
+var app = angular.module('app', []);
+app.controller('JugadoresController', function($scope) {
+    $scope.nombre = 'asdasdasd'
+    $scope.save = function(){
         }
         alert('ASDAS')
     $scope.formVisibility = false;

@@ -2,7 +2,7 @@
 {% block content %}
 {% load static %}
 </br></br>
-<div ngController='JugadoresController'>
+<div ng-controller='JugadoresController'>
   <div class="table-responcive">
       <table class='table table-striped'>
           <tr>
@@ -21,8 +21,11 @@
           {% endfor %}
       </table>
   </div>
+  {{ verbatim }}
+  <h1>{{nombre}}</h1>
+  {{ endverbatim }}
     </br>
-    <button ng-lick='ShowForm()' ng-hide='formVisibility'>Añadir Jugador</button>
+    <button ng-click='ShowForm()' ng-hide='formVisibility'>Añadir Jugador</button>
     <div ng-show='formVisibility'>
         <form method='post'>{% csrf_token %}
             <div class='form-group'>
@@ -33,6 +36,8 @@
             </div>
         </form>
     </div>
-    <script src="{% static 'js/jugadores.js' %}" type='text/javascript'></script>
   </div>
   {% endblock %}
+{% block script %}
+<script src="{% static 'js/jugadores.js' %}" type='text/javascript'></script>
+{% endblock %}
